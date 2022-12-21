@@ -1,0 +1,21 @@
+.signin-modal {
+    margin-top: 7px 10px;
+    width: 300px;
+    padding-top: 10px;
+    background-color: #38444d;
+    position: absolute;
+    right: 0px;
+}
+
+.signin-modal > input {
+    padding: 5px;
+    margin: 5px 0px;
+}
+.signin-modal > button {
+    padding: 5px 20px;
+    margin: 5px 0px 10px 0px;
+}
+.signin-modal > span {
+    padding: 5px 20px;
+    margin: 5px 0px 10px 0px;
+}

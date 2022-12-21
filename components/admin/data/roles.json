@@ -1,0 +1,20 @@
+[
+    {
+        "bit": 0,
+        "bitValue": 0,
+        "name": "Banned",
+        "description": "(can no longer comment, submit art, etc. equivalent to a non-user)"
+    },
+    {
+        "bit": 1,
+        "bitValue": 1,
+        "name": "Basic User",
+        "description": "(can comment, Fav, stuff)"
+    },
+    {
+        "bit": 2,
+        "bitValue": 2,
+        "name": "Basic User",
+        "description": "(can comment, Fav, stuff)"
+    }
+]

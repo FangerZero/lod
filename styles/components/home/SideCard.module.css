@@ -1,0 +1,9 @@
+.main {
+    display: block;
+    color: white;
+    background-color: indigo;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 10px;
+    min-height: 150px; 
+}
