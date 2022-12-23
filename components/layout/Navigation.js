@@ -3,17 +3,24 @@ import styles from '../../styles/components/layout/Navigation.module.css';
 import SignIn from './account/SignIn';
 import { useContext } from 'react';
 import { UserContext } from '../../lib/context';
+import roleValues from '../admin/data/roles.json';
 
 export default function Navigation() {
     const { user, username, roles } = useContext(UserContext);
-    const roleID = {
-        BANNED: 0,
-        LOGGED_IN: 1,
-        ARTIST: 2,
-        JOURNALIST: 4 
-    };
 
-    const adminFlag = (roles & roleID.JOURNALIST) === roleID.JOURNALIST;
+    const checkRole = (rolesToCheck) => {
+        const arrayOfRoles = rolesToCheck.split(',');
+        let test = false;
+        console.log('checkROle', arrayOfRoles)
+        arrayOfRoles.forEach(role => {
+            if (roles & roleValues[role.toUpperCase()].bit) {
+                console.log('true');
+                test = true;
+            }
+        });
+        console.log(test);
+        return test;
+    }
 
     return (
         <div className={styles.nav}>
@@ -50,8 +57,20 @@ export default function Navigation() {
                     <Link className={styles.drpdwnbtn} href="/resources/archives">Archives</Link>
                 </div>
             </div>
-            {adminFlag &&
-                <Link className={styles['nav-link']} href="/admin">Admin: {username}</Link>
+            {checkRole('ARTIST,MODERATOR,ADMIN,MASTER') &&
+                <Link className={styles['nav-link']} href="/admin/fanart">Admin Fan-Art</Link>
+            }
+            {checkRole('JOURNALIST,MODERATOR,ADMIN,MASTER') &&
+                <Link className={styles['nav-link']} href="/admin/news">Admin: News</Link>
+            }
+            {checkRole('COORDINATOR,MODERATOR,ADMIN,MASTER') &&
+                <Link className={styles['nav-link']} href="/admin/events">Admin: Events</Link>
+            },
+            {checkRole('MODERATOR,ADMIN,MASTER') &&
+                <Link className={styles['nav-link']} href="/admin/users">Admin: Users</Link>
+            }
+            {username &&
+                <div className={styles['nav-link']}>{username}</div>
             }
             <div className={styles.user}>
                 <SignIn />

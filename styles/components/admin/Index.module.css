@@ -1,0 +1,12 @@
+.links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.link {
+    border-radius: 10px;
+
+    padding: 50px;
+    background: green;
+}
