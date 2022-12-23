@@ -22,6 +22,10 @@
 	background-color: #e0e0e0;
 }
 
+.admin-nav-link {
+	background-color: #2373b5;
+}
+
 .dropdown-content {
 	margin-top: 14px;
 	margin-left: -16px;

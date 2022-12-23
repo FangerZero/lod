@@ -4,7 +4,7 @@ import RoleCheck from '../../../components/RoleCheck';
 
 export default function AdminNewsArticle() {
   return (
-    <RoleCheck role="JOURNALIST">
+    <RoleCheck role="JOURNALIST,MODERATOR,ADMIN">
       <Link className={styles.link} href="/admin/news">Back To News</Link>
       AdminNewsArticle
     </RoleCheck>

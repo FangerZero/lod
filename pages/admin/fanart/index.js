@@ -4,7 +4,7 @@ import RoleCheck from '../../../components/RoleCheck';
 
 export default function AdminFanArts() {
   return (
-    <RoleCheck role="ARTIST">
+    <RoleCheck role="ARTIST,MODERATOR,ADMIN">
       <Link className={styles.link} href="/admin/fanart/add">Add FanArt</Link>
       AdminFanArts
     </RoleCheck>

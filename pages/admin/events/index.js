@@ -4,7 +4,7 @@ import RoleCheck from '../../../components/RoleCheck';
 
 export default function AdminEvents() {
   return (
-    <RoleCheck role="ARTIST">
+    <RoleCheck role="ARTIST,MODERATOR,ADMIN">
       <Link className={styles.link} href="/admin/even/add">Add Events</Link>
       Add Event
     </RoleCheck>

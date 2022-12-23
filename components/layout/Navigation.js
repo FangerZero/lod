@@ -10,16 +10,14 @@ export default function Navigation() {
 
     const checkRole = (rolesToCheck) => {
         const arrayOfRoles = rolesToCheck.split(',');
-        let test = false;
-        console.log('checkROle', arrayOfRoles)
+        let hasRole = false;
+
         arrayOfRoles.forEach(role => {
-            if (roles & roleValues[role.toUpperCase()].bit) {
-                console.log('true');
-                test = true;
+            if (roleValues[role].bit & roles) {
+                hasRole = true;
             }
         });
-        console.log(test);
-        return test;
+        return hasRole;
     }
 
     return (
@@ -58,16 +56,16 @@ export default function Navigation() {
                 </div>
             </div>
             {checkRole('ARTIST,MODERATOR,ADMIN,MASTER') &&
-                <Link className={styles['nav-link']} href="/admin/fanart">Admin Fan-Art</Link>
+                <Link className={`${styles['nav-link']} ${styles['admin-nav-link']}`} href="/admin/fanart">Fan-Art</Link>
             }
             {checkRole('JOURNALIST,MODERATOR,ADMIN,MASTER') &&
-                <Link className={styles['nav-link']} href="/admin/news">Admin: News</Link>
+                <Link className={`${styles['nav-link']} ${styles['admin-nav-link']}`} href="/admin/news">News</Link>
             }
             {checkRole('COORDINATOR,MODERATOR,ADMIN,MASTER') &&
-                <Link className={styles['nav-link']} href="/admin/events">Admin: Events</Link>
-            },
+                <Link className={`${styles['nav-link']} ${styles['admin-nav-link']}`} href="/admin/events">Events</Link>
+            }
             {checkRole('MODERATOR,ADMIN,MASTER') &&
-                <Link className={styles['nav-link']} href="/admin/users">Admin: Users</Link>
+                <Link className={`${styles['nav-link']} ${styles['admin-nav-link']}`} href="/admin/users">Users</Link>
             }
             {username &&
                 <div className={styles['nav-link']}>{username}</div>

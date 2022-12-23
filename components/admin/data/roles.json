@@ -1,49 +1,41 @@
 {
     "BANNED": {
         "bit": 0,
-        "bitValue": 0,
         "name": "Banned",
         "description": "(can no longer comment, submit art, etc. equivalent to a non-user)"
     },
     "BASIC": {
         "bit": 1,
-        "bitValue": 1,
         "name": "Basic User",
         "description": "(can comment, Fav, stuff)"
     },
     "ARTIST": {
         "bit": 2,
-        "bitValue": 2,
         "name": "Artist",
         "description": "Can Submit Art"
     },
     "JOURNALIST": {
         "bit": 4,
-        "bitValue": 4,
         "name": "Journalist",
         "description": "Can Submit News Articles"
     },
     "COORDINATOR": {
         "bit": 8,
-        "bitValue": 8,
         "name": "Event Coordinator",
         "description": "Creates and moderates events"
     },
     "MODERATOR": {
         "bit": 16,
-        "bitValue": 16,
         "name": "Moderator",
-        "description": "Moderates comments, fan art, articles, and ensures a happy community"
+        "description": "Cannot add anything but can edit comments, fan art, articles, and ensures a happy community"
     },
     "ADMIN": {
         "bit": 32,
-        "bitValue": 32,
         "name": "Admin",
         "description": "Helps with Moderation and handing out permissions"
     },
     "MASTER": {
         "bit": 64,
-        "bitValue": 64,
         "name": "Master",
         "description": "Controls permissions for everyone."
     }
