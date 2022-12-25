@@ -27,24 +27,6 @@ export default function RichTextEditor(props) {
 
     };
 
-    const reset = () => {
-        htmlToSaveRef.current.innerHTML = null;
-        //setHtmlToSave("");
-        setRTESettings({
-            bold: false,
-            italic: false,
-            underline: false,
-            strikethrough: false,
-            superscript: false,
-            subscript: false,
-            fontName: fontList[0],
-            fontSize: 3,
-            fontColor: '#000000',
-            fontHighlight: '#ffffff'
-        });
-        props.setHtmlToSave("");
-    };
-
     const saveHtml = () => {
         console.log('rteSettings: ', rteSettings);
         props.setHtmlToSave(htmlToSaveRef.current.innerHTML);
@@ -111,7 +93,6 @@ export default function RichTextEditor(props) {
                 </div>
             </div>
             <div id="text-input" contentEditable="true" onBlur={saveHtml} ref={htmlToSaveRef} className={styles.input}></div>
-            <div className={styles.button} onClick={reset}>Reset</div>
         </div>
     );
 }
