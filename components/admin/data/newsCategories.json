@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Event",
+        "value": "event",
+        "description": ""
+    }, {
+        "name": "General",
+        "value": "general",
+        "description": ""
+    }, {
+        "name": "Montly Recap",
+        "value": "monthly_recap",
+        "description": ""
+    }, {
+    
+        "name": "Projects",
+        "value": "projects",
+        "description": ""
+    }, {
+        "name": "Severed Sundays",
+        "value": "severed_sundays",
+        "description": ""
+    }
+]
