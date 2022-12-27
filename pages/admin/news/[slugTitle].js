@@ -24,17 +24,6 @@ export default function AdminNewsArticle() {
     
   useEffect(() => {
     const fetchData = async () => {
-      /*
-      const c = query(collection(db, "news"), orderBy("dateTime", "desc"), limit(10));
-      const cSnapshot = await getDocs(c);
-      const newArray = [];
-      
-      console.log(`Fetched ${cSnapshot.size} documents`);
-      cSnapshot.forEach((doc) => {
-        newArray.push({id: doc.id, data: {...doc.data()}})
-      });
-      setNewsList([...newArray]);
-      */
       const newsDoc = await doc(db, "news", slugTitle);
       await getDoc(newsDoc).then(results => {
         console.log(results);
