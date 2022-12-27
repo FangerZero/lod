@@ -28,21 +28,18 @@ export default function AddNewsArticle() {
   };
 
   const setTitleSlug = (title) => {
-    console.log('SlugTitle', title);
     const slugTitle = title.replace(/\s/g , "-").toLowerCase();
     setNewsArticle({...newsArticle, title: title, slugTitle: slugTitle});
   };
 
   const onNewsSubmit = () => {
-    console.log(newsArticle);
-    const docRef = addDoc(collection(db, "news"), { ...newsArticle })
-    .then(result => {
-      console.log('result', result);
-    });
-
+    const newsDocId = `${newsArticle.dateTime.getFullYear()}-${newsArticle.dateTime.getMonth()}-${newsArticle.dateTime.getDate()}-${newsArticle.slugTitle}`;
+    const newsDoc = doc(db, 'news', newsDocId)
     
-    console.log('docref', docRef);
-    router.push(`/admin/news/${newsArticle.slugTitle}`);
+    setDoc(newsDoc, {...newsArticle}, { merge: true });
+    
+    console.log('newsDoc', newsDoc);
+    router.push(`/admin/news/${newsDocId}`);
   }
 
   return (
