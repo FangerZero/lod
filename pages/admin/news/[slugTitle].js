@@ -44,19 +44,6 @@ export default function AdminNewsArticle() {
     setNewsArticle({...newsArticle, title: title, slugTitle: slugTitle});
   };
 
-  const convertDateToString = () => {
-    console.log('newsArticle.dateTime: ', newsArticle.dateTime);
-    const year = newsArticle.dateTime.getFullYear();
-    const month = newsArticle.dateTime.getMonth()+1;
-    const day = newsArticle.dateTime.getDate();
-    const hours = newsArticle.dateTime.getHours();
-    const minutes = newsArticle.dateTime.getMinutes();
-
-    const date = `${year}-${month}-${day} ${hours}:${minutes}:00`;
-    console.log('date: ', date);
-    return date.toString;
-  };
-
   const onNewsSubmit = () => {
     const newsDocId = `${newsArticle.dateTime.toString().substring(0,10)}-${newsArticle.slugTitle}`;    
     const newsDoc = doc(db, 'news', newsDocId);
@@ -77,7 +64,7 @@ export default function AdminNewsArticle() {
       </div>
       <div>
         Release Date & Time (GMT-0000)
-        <input type="datetime-local" id="date" name="date" onChange={e => setNewsArticle({...newsArticle, dateTime: e.target.value})} placeholder="Release Date" value={newsArticle.dateTime} />
+        <input type="datetime-local" id="date" name="date" onChange={e => setNewsArticle({...newsArticle, dateTime: e.target.value.toString()})} placeholder="Release Date" value={newsArticle.dateTime} />
       </div>
       <div> 
         Category      

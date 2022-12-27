@@ -7,6 +7,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 export default function RichTextEditor(props) {
     const fontList = ['Arial', 'Courier New', 'cursive', 'Garamond', 'Georgia', 'Times New Roman', 'Verdana'];
+
     let htmlToSaveRef = useRef(null);
     const [rteSettings, setRTESettings] = useState({
         bold: false,
@@ -22,20 +23,18 @@ export default function RichTextEditor(props) {
     });
 
     useEffect(() => {
-        // htmlToSaveRef.current.innerHTML = props.htmlToSave;
+        htmlToSaveRef.current.innerHTML = props.htmlToSave;
     });
 
     const handleClick = (e) => {
         if (typeof rteSettings[e.target.id] == "boolean") {
-            console.log('boolean');
             setRTESettings({...rteSettings, [e.target.id]: !rteSettings[e.target.id]});
             modifyText(e.target.id, false, null);
         } else {
-            console.log('e', e);
             setRTESettings({...rteSettings, [e.target.id]: e.target.value});
             modifyText(e.target.id, false, e.target.value);
         }
-    }
+    };
 
     const addLink = (e) => {
         let link = prompt("Enter URL please");
@@ -43,7 +42,7 @@ export default function RichTextEditor(props) {
             link = "http://" + link;
         }
         modifyText(e.target.id, false, link);
-    }
+    };
 
     const modifyText = (command, defaultUi, value) => {
         console.log('value: ', value);
@@ -51,7 +50,6 @@ export default function RichTextEditor(props) {
     };
 
     const saveHtml = () => {
-        console.log('SetHtml');
         props.setHtmlToSave(htmlToSaveRef.current.innerHTML);
     };
     
