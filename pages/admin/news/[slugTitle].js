@@ -58,16 +58,8 @@ export default function AdminNewsArticle() {
   };
 
   const onNewsSubmit = () => {
-    convertDateToString();
-    //console.log('dateTime: ', newsArticle.dateTime.toDateString());
-    
-    // console.log('seconds: ', newsArticle.dateTime.seconds);
-    // console.log('createDateFormat: ', createDateFormat());
-    // 2018-06-14T00:00
-    /*
-    const newsDocId = `${newsArticle.dateTime.getFullYear()}-${newsArticle.dateTime.getMonth()+1}-${newsArticle.dateTime.getDate()}-${newsArticle.slugTitle}`;
+    const newsDocId = `${newsArticle.dateTime.toString().substring(0,10)}-${newsArticle.slugTitle}`;    
     const newsDoc = doc(db, 'news', newsDocId);
-
     setDoc(newsDoc, {...newsArticle}, { merge: true });
     
     if (slugTitle !== newsDocId) {
@@ -75,7 +67,6 @@ export default function AdminNewsArticle() {
       deleteDoc(doc(db, "news", slugTitle));
       router.push(`/admin/news/${newsDocId}`);
     }
-    */
   }
 
   return (
