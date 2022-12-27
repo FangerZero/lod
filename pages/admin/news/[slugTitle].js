@@ -6,12 +6,13 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Categories from '../../../components/admin/data/newsCategories.json';
 import RichTextEditor from '../../../components/util/RichTextEditor';
-import { firestore, doc, setDoc, getDoc, addDoc, collection, deleteDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore"; 
 import { db } from '../../../lib/firebase';
 
 export default function AdminNewsArticle() {
   const router = useRouter();
   const { slugTitle } = router.query;
+  const d = new Date();
 
   const [newsArticle, setNewsArticle] = useState({
     slugTitle: slugTitle,
@@ -21,12 +22,12 @@ export default function AdminNewsArticle() {
     images: [],
     article: "",
   });
-    
+  
   useEffect(() => {
     const fetchData = async () => {
       const newsDoc = await doc(db, "news", slugTitle);
       await getDoc(newsDoc).then(results => {
-        console.log(results);
+        console.log(results.data());
         setNewsArticle({...results.data()});
       });
     };
@@ -43,8 +44,28 @@ export default function AdminNewsArticle() {
     setNewsArticle({...newsArticle, title: title, slugTitle: slugTitle});
   };
 
+  const convertDateToString = () => {
+    console.log('newsArticle.dateTime: ', newsArticle.dateTime);
+    const year = newsArticle.dateTime.getFullYear();
+    const month = newsArticle.dateTime.getMonth()+1;
+    const day = newsArticle.dateTime.getDate();
+    const hours = newsArticle.dateTime.getHours();
+    const minutes = newsArticle.dateTime.getMinutes();
+
+    const date = `${year}-${month}-${day} ${hours}:${minutes}:00`;
+    console.log('date: ', date);
+    return date.toString;
+  };
+
   const onNewsSubmit = () => {
-    const newsDocId = `${newsArticle.dateTime.getFullYear()}-${newsArticle.dateTime.getMonth()}-${newsArticle.dateTime.getDate()}-${newsArticle.slugTitle}`;
+    convertDateToString();
+    //console.log('dateTime: ', newsArticle.dateTime.toDateString());
+    
+    // console.log('seconds: ', newsArticle.dateTime.seconds);
+    // console.log('createDateFormat: ', createDateFormat());
+    // 2018-06-14T00:00
+    /*
+    const newsDocId = `${newsArticle.dateTime.getFullYear()}-${newsArticle.dateTime.getMonth()+1}-${newsArticle.dateTime.getDate()}-${newsArticle.slugTitle}`;
     const newsDoc = doc(db, 'news', newsDocId);
 
     setDoc(newsDoc, {...newsArticle}, { merge: true });
@@ -54,6 +75,7 @@ export default function AdminNewsArticle() {
       deleteDoc(doc(db, "news", slugTitle));
       router.push(`/admin/news/${newsDocId}`);
     }
+    */
   }
 
   return (
@@ -64,11 +86,11 @@ export default function AdminNewsArticle() {
       </div>
       <div>
         Release Date & Time (GMT-0000)
-        <input type="datetime-local" id="date" name="date" onChange={e => setNewsArticle({...newsArticle, dateTime: e.target.valueAsDate})} placeholder="Release Date" value={new Date(newsArticle.dateTime)}/>
+        <input type="datetime-local" id="date" name="date" onChange={e => setNewsArticle({...newsArticle, dateTime: e.target.value})} placeholder="Release Date" value={newsArticle.dateTime} />
       </div>
       <div> 
         Category      
-        <select name="category" id="category" onChange={e => setNewsArticle({...newsArticle, category: e.target.value})} defaultValue={newsArticle.category}>
+        <select name="category" id="category" onChange={e => setNewsArticle({...newsArticle, category: e.target.value})} value={newsArticle.category}>
           <option value="" disabled>Select your Category</option>
           {Categories.map((element,key) => <option value={element.value} key={key}>{element.name}</option>)}
         </select>
@@ -82,7 +104,3 @@ export default function AdminNewsArticle() {
     </RoleCheck>
   );
 }
-
-/*
-
-*/

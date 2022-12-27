@@ -27,7 +27,7 @@ export default function AdminNews() {
   return (
     <RoleCheck role="JOURNALIST,MODERATOR,ADMIN">
       <Link className={styles.link} href="/admin/news/add">Add Article</Link>
-      {newsList.map(item => <Link className={styles.link} href={`/admin/news/${item.id}`} key={item.id}>{item.data.title}</Link>)}
+      {newsList.map(item => <Link className={styles['article-link']} href={`/admin/news/${item.id}`} key={item.id}>{item.data.title}</Link>)}
     </RoleCheck>
   )
 }

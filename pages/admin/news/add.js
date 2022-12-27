@@ -33,7 +33,7 @@ export default function AddNewsArticle() {
   };
 
   const onNewsSubmit = () => {
-    const newsDocId = `${newsArticle.dateTime.getFullYear()}-${newsArticle.dateTime.getMonth()}-${newsArticle.dateTime.getDate()}-${newsArticle.slugTitle}`;
+    const newsDocId = `${newsArticle.dateTime.getFullYear()}-${newsArticle.dateTime.getMonth()+1}-${newsArticle.dateTime.getDate()}-${newsArticle.slugTitle}`;
     const newsDoc = doc(db, 'news', newsDocId)
     
     setDoc(newsDoc, {...newsArticle}, { merge: true });
@@ -50,7 +50,7 @@ export default function AddNewsArticle() {
       </div>
       <div>
         Release Date & Time (GMT-0000)
-        <input type="datetime-local" id="date" name="date" onChange={e => setNewsArticle({...newsArticle, dateTime: e.target.valueAsDate})} placeholder="Release Date" />
+        <input type="datetime-local" id="date" name="date" onChange={e => setNewsArticle({...newsArticle, dateTime: e.target.value})} placeholder="Release Date" />
       </div>
       <div> 
         Category      
