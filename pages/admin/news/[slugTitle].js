@@ -1,55 +1,50 @@
-import { useState, useContext } from 'react';
-import { useRouter } from 'next/router';
-import { UserContext } from '../../../lib/context';
+import Link from 'next/link';
 import styles from '../../../styles/components/admin/Index.module.css';
 import RoleCheck from '../../../components/RoleCheck';
-import Categories from '../../../components/admin/data/newsCategories.json';
-import RichTextEditor from '../../../components/util/RichTextEditor';
-import { doc, setDoc, getDoc, addDoc, collection } from "firebase/firestore"; 
-import { db } from '../../../lib/firebase';
 
-export default function AddNewsArticle() {
-  const router = useRouter()
-  const { user, username } = useContext(UserContext);
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+// import Categories from '../../../components/admin/data/newsCategories.json';
+// import RichTextEditor from '../../../components/util/RichTextEditor';
+// import { doc, setDoc, getDoc, addDoc, collection } from "firebase/firestore"; 
+// import { db } from '../../../lib/firebase';
 
+export default function AdminNewsArticle() {
+  const router = useRouter();
+  const { slugTitle } = router.query;
+
+  console.log('router: ', router);
   const [newsArticle, setNewsArticle] = useState({
-    slugTitle: "",
+    slugTitle: slugTitle,
     title: "",
     dateTime: new Date(),
     category: "",
     images: [],
     article: "",
-    author: username,
-    userPid: user.uid
+    author: "",
+    userPid: ""
   });
 
   const setArticle = (article) => {
     setNewsArticle({...newsArticle, article: article});
   };
 
-  const setTitleSlug = (title) => {
-    console.log('SlugTitle', title);
-    const slugTitle = title.replace(/\s/g , "-").toLowerCase();
-    setNewsArticle({...newsArticle, title: title, slugTitle: slugTitle});
-  };
-
   const onNewsSubmit = () => {
-    console.log(newsArticle);
-    const docRef = addDoc(collection(db, "news"), { ...newsArticle })
-    .then(result => {
-      console.log('result', result);
-    });
-
-    
-    console.log('docref', docRef);
-    router.push(`/admin/news/${newsArticle.slugTitle}`);
+    // Should be able to save via news.uid received
   }
 
   return (
-    <RoleCheck role="JOURNALIST">
+    <RoleCheck role="JOURNALIST,MODERATOR,ADMIN">
+      Cats go Meow
+    </RoleCheck>
+  );
+}
+
+/*
+
       <div>
         Title 
-        <input type="text" id="title" name="title" onChange={e => setTitleSlug(e.target.value)} placeholder="Title" />
+        <input type="text" id="title" name="title" onChange={e => setNewsArticle({...newsArticle, title: e.target.value})} placeholder="Title" />
       </div>
       <div>
         Release Date & Time (GMT-0000)
@@ -68,6 +63,4 @@ export default function AddNewsArticle() {
       </div>
       <RichTextEditor htmlToSave={newsArticle.article} setHtmlToSave={setArticle}/>
       <button onClick={(e) => onNewsSubmit(e)}>Submit</button>
-    </RoleCheck>
-  );
-}
+*/
