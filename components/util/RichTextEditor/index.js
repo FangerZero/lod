@@ -8,6 +8,7 @@ import React, { useState, useRef, useEffect } from "react";
 export default function RichTextEditor(props) {
     const fontList = ['Arial', 'Courier New', 'cursive', 'Garamond', 'Georgia', 'Times New Roman', 'Verdana'];
 
+    
     let htmlToSaveRef = useRef(null);
     const [rteSettings, setRTESettings] = useState({
         bold: false,
@@ -21,10 +22,16 @@ export default function RichTextEditor(props) {
         foreColor: '#000000',
         backColor: '#ffffff'
     });
-
+    
     useEffect(() => {
-        htmlToSaveRef.current.innerHTML = props.htmlToSave;
-    });
+        const setRefToProps = async () => {
+            console.log('htmlToSave', props.htmlToSave);
+            htmlToSaveRef.current.innerHTML = await props.htmlToSave;
+            console.log('htmlToSaveRef', htmlToSaveRef.current.innerHTML);
+        }
+        setRefToProps();
+    }, []);
+    
 
     const handleClick = (e) => {
         if (typeof rteSettings[e.target.id] == "boolean") {
@@ -45,7 +52,6 @@ export default function RichTextEditor(props) {
     };
 
     const modifyText = (command, defaultUi, value) => {
-        console.log('value: ', value);
         document.execCommand(command, defaultUi, value);
     };
 
@@ -113,7 +119,7 @@ export default function RichTextEditor(props) {
                     </div>
                 </div>
             </div>
-            <div id="text-input" contentEditable="true" ref={htmlToSaveRef} className={styles.input} onChange={saveHtml} />
+            <div id="text-input" contentEditable="true" ref={htmlToSaveRef} className={styles.input}></div>
         </div>
         
     );
