@@ -23,13 +23,6 @@ export default function RichTextEditor(props) {
     
     useEffect(() => {
         htmlToSaveRef.current.innerHTML = props.htmlToSave;
-        /*
-        const setRefToProps = async () => {
-            console.log('htmlToSave', props.htmlToSave);
-            htmlToSaveRef.current.innerHTML = props.htmlToSave;
-        }
-        setRefToProps();
-        */
     }, [props.htmlToSave]);
 
     const handleClick = (e) => {
