@@ -53,6 +53,8 @@ export default function AdminNewsArticle() {
       // Grabs Old Slug Title Doc and deletes it.
       deleteDoc(doc(db, "news", slugTitle));
       router.push(`/admin/news/${newsDocId}`);
+    } else {
+      router.push(`/admin/news`);
     }
   }
 

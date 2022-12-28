@@ -7,9 +7,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 export default function RichTextEditor(props) {
     const fontList = ['Arial', 'Courier New', 'cursive', 'Garamond', 'Georgia', 'Times New Roman', 'Verdana'];
-
-    
-    let htmlToSaveRef = useRef(null);
+    let htmlToSaveRef = useRef(props.htmlToSave);
     const [rteSettings, setRTESettings] = useState({
         bold: false,
         italic: false,
@@ -24,14 +22,15 @@ export default function RichTextEditor(props) {
     });
     
     useEffect(() => {
+        htmlToSaveRef.current.innerHTML = props.htmlToSave;
+        /*
         const setRefToProps = async () => {
             console.log('htmlToSave', props.htmlToSave);
-            htmlToSaveRef.current.innerHTML = await props.htmlToSave;
-            console.log('htmlToSaveRef', htmlToSaveRef.current.innerHTML);
+            htmlToSaveRef.current.innerHTML = props.htmlToSave;
         }
         setRefToProps();
-    }, []);
-    
+        */
+    }, [props.htmlToSave]);
 
     const handleClick = (e) => {
         if (typeof rteSettings[e.target.id] == "boolean") {
@@ -79,7 +78,7 @@ export default function RichTextEditor(props) {
                     <button id="redo"  onClick={e => handleClick(e)}  className="option-button format">Redo</button>
                 </div>
                 <div className="section">
-                    <button id="createLink"  onClick={e => handleClick(e)}  className="option-button format" onClick={e => addLink(e)}>Link</button>
+                    <button id="createLink"  onClick={e => addLink(e)}  className="option-button format" >Link</button>
                     <button id="unlink"  onClick={e => handleClick(e)}  className="option-button format">Unlink</button>
                 </div>
                 <div className="section">
@@ -119,8 +118,7 @@ export default function RichTextEditor(props) {
                     </div>
                 </div>
             </div>
-            <div id="text-input" contentEditable="true" ref={htmlToSaveRef} className={styles.input}></div>
+            <div id="text-input" contentEditable={true} ref={htmlToSaveRef} className={styles.input} />
         </div>
-        
     );
 }
