@@ -27,7 +27,6 @@ export default function AdminNewsArticle() {
     const fetchData = async () => {
       const newsDoc = await doc(db, "news", slugTitle);
       await getDoc(newsDoc).then(results => {
-        console.log(results.data());
         setNewsArticle({...results.data()});
       });
     };
@@ -39,7 +38,6 @@ export default function AdminNewsArticle() {
   };
 
   const setTitleSlug = (title) => {
-    console.log('SlugTitle', title);
     const slugTitle = title.replace(/\s/g , "-").toLowerCase();
     setNewsArticle({...newsArticle, title: title, slugTitle: slugTitle});
   };

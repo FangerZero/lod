@@ -15,7 +15,6 @@ export default function AdminNews() {
       const cSnapshot = await getDocs(c);
       const newArray = [];
       
-      console.log(`Fetched ${cSnapshot.size} documents`);
       cSnapshot.forEach((doc) => {
         newArray.push({id: doc.id, data: {...doc.data()}})
       });
