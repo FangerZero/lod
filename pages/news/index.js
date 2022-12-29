@@ -2,33 +2,38 @@ import Link from 'next/link';
 import Meta from '../../components/layout/Meta';
 import NewsCard from '../../components/home/NewsCard';
 import styles from '../../styles/news/News.module.css';
+import { useState, useEffect } from 'react';
+import { collection, query, limit, getDocs, orderBy} from "firebase/firestore";
+import { db } from '../../lib/firebase';
 
 export default function News() {
+  const [newsList, setNewsList] = useState([]);
+
+  useEffect(() => {
+    const getList = async () => {
+      const c = query(collection(db, "news"), orderBy("dateTime", "desc"), limit(7));
+      const cSnapshot = await getDocs(c);
+      const newArray = [];
+      
+      cSnapshot.forEach((doc) => {
+        newArray.push({id: doc.id, data: {...doc.data()}})
+      });
+      setNewsList([...newArray]);
+    }
+    getList()
+  }, []);
+
   return (
     <div>
       <Meta title="News" description="Welcome to the Legend of Dragoon fansite's News Page." />
       <div className={styles.news}>
-        <Link href={`/news/I'm a title`}>
-          <NewsCard date="2022-03-01" title="I'm a title" summary="idk what to put here I'm erally tired so I'm a sleep soon"/>
-        </Link>
-        <Link href={`/news/Meows`}>
-          <NewsCard date="2022-03-01" title="Meows" summary="Test"/>
-        </Link>
-        <Link href={`/news/Meows`}>
-          <NewsCard date="2022-03-01" title="Meows" summary="Test"/>
-        </Link>
-        <Link href={`/news/Meows`}>
-          <NewsCard date="2022-03-01" title="Meows" summary="Test"/>
-        </Link>
-        <Link href={`/news/Meows`}>
-          <NewsCard date="2022-03-01" title="Meows" summary="Test"/>
-        </Link>
-        <Link href={`/news/Meows`}>
-          <NewsCard date="2022-03-01" title="Meows" summary="Test"/>
-        </Link>
-        <Link href={`/news/Meows`}>
-          <NewsCard date="2022-03-01" title="Meows" summary="Test"/>
-        </Link>
+        {newsList.map(item => {
+          return (
+            <Link href={`/news/${item.id}`} key={item.id}>
+              <NewsCard date={new Date(item.data.dateTime)} title={item.data.title} article={item.data.article}/>
+            </Link>
+          )
+        })}
       </div>
     </div>
   )

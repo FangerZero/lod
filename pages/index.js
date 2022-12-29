@@ -3,19 +3,39 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import NewsCard from '../components/home/NewsCard';
 import SideCard from '../components/home/SideCard';
+import { useState, useEffect } from 'react';
+import { collection, query, limit, getDocs, orderBy} from "firebase/firestore";
+import { db } from '../lib/firebase';
 
 
 export default function Home() {
+  const [newsList, setNewsList] = useState([]);
+
+  useEffect(() => {
+    const getList = async () => {
+      const c = query(collection(db, "news"), orderBy("dateTime", "desc"), limit(10));
+      const cSnapshot = await getDocs(c);
+      const newArray = [];
+      
+      cSnapshot.forEach((doc) => {
+        newArray.push({id: doc.id, data: {...doc.data()}})
+      });
+      setNewsList([...newArray]);
+    }
+    getList()
+  }, []);
+  
   return (
     <>
       <Meta description="A fansite to unify the fandom worldwide." />
       <div className={styles.news}>
-        <Link href={`/news/I'm a title`}>
-          <NewsCard date="2022-03-01" title="I'm a title" summary="idk what to put here I'm erally tired so I'm a sleep soon"/>
-        </Link>
-        <Link href={`/news/Meows`}>
-          <NewsCard date="2022-03-01" title="Meows" summary="Test"/>
-        </Link>
+        {newsList.map(item => {
+          return (
+            <Link href={`/news/${item.id}`} key={item.id}>
+              <NewsCard date={new Date(item.data.dateTime)} title={item.data.title} article={item.data.article}/>
+            </Link>
+          )
+        })}
       </div>
       <div className={styles['side-cards']}>
         <SideCard info="Podcast/Youtube">

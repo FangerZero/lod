@@ -6,9 +6,9 @@ export default function NewsCard(props) {
     <div className={styles.main}>
       <h3>{props.date} - {props.title}</h3>
       
-      {props.summary &&  
+      {props.article &&  
         <p>
-          {props.summary}
+          {props.article}
         </p>
       }
     </div>

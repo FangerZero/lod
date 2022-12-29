@@ -6,7 +6,6 @@ import { collection, query, limit, getDocs, orderBy} from "firebase/firestore";
 import { db } from '../../../lib/firebase';
 
 export default function AdminNews() {
-    
   const [newsList, setNewsList] = useState([]);
 
   useEffect(() => {

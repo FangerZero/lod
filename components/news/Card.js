@@ -10,9 +10,9 @@ export default function NewsCard(props) {
       {props.image &&
         <Image src={props.image} alt="Image of News"></Image>
       }
-      {props.summary &&  
+      {props.article &&  
         <p>
-          {props.summary}
+          {props.article}
         </p>
       }
     </div>
