@@ -3,7 +3,7 @@ export default function FanArt() {
     return (
       <div>
           Fan Art
-          WIP
+          Shows All Fan Art
       </div>
     )
   }

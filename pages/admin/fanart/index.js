@@ -7,6 +7,7 @@ export default function AdminFanArts() {
     <RoleCheck role="ARTIST,MODERATOR,ADMIN">
       <Link className={styles.link} href="/admin/fanart/add">Add FanArt</Link>
       AdminFanArts
+      Only Show artist's their art, and show moderators and admins everyone's art. 
     </RoleCheck>
   );
 }
