@@ -10,6 +10,7 @@ import { db } from '../lib/firebase';
 
 export default function Home() {
   const [newsList, setNewsList] = useState([]);
+  const [ytVideo, setYTVideo] = useState('');
 
   useEffect(() => {
     const getList = async () => {
@@ -22,9 +23,17 @@ export default function Home() {
       });
       setNewsList([...newArray]);
     }
-    getList()
+    getList();
+    latestYTVideo();
   }, []);
-  
+
+  const latestYTVideo = () => {
+    fetch("https://decapi.me/youtube/latest_video?id=UC7LuPZPTRxCjr3uHG0qCiXg").then(response => response.text().then(text => {
+      const videoId = text.split("/").pop();
+      setYTVideo(`https://www.youtube.com/embed/${videoId}`);
+    }));
+  };
+
   return (
     <>
       <Meta description="A fansite to unify the fandom worldwide." />
@@ -37,9 +46,17 @@ export default function Home() {
           )
         })}
       </div>
+     
       <div className={styles['side-cards']}>
-        <SideCard info="Podcast/Youtube">
-          <iframe width="100%" src="https://www.youtube.com/embed/bA92Cl6NfzQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <SideCard info="Youtube">
+          {ytVideo !== '' &&
+          <>
+            Coming Up...
+            <iframe width="100%" src={ytVideo} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          </>}
+        </SideCard>
+        <SideCard info="Podcast">
+          Podcasts
         </SideCard>
         <SideCard>
           Events Calendar
