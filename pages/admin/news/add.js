@@ -20,7 +20,8 @@ export default function AddNewsArticle() {
     images: [],
     article: "",
     author: username,
-    userPid: user.uid
+    userPid: user.uid,
+    publish: false,
   });
 
   const setArticle = (article) => {
@@ -64,6 +65,11 @@ export default function AddNewsArticle() {
         <input type="file" id="images" onChange={e => setNewsArticle({...newsArticle, images: [...newsArticle.images, ...e.target.files]})} accept="image/webp" multiple />
       </div>
       <RichTextEditor htmlToSave={newsArticle.article} setHtmlToSave={setArticle}/>
+      <div onChange={e => setNewsArticle({...newsArticle, publish: e.target.value})}>
+        Publish:
+        <input type="radio" id="publish" name="fav_language" value="true" />Yes
+        <input type="radio" id="unpublish" name="fav_language" value="false" defaultChecked/>No
+      </div>
       <button onClick={(e) => onNewsSubmit(e)}>Submit</button>
     </RoleCheck>
   );
