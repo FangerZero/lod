@@ -36,7 +36,7 @@ export default function AdminManagerUsers() {
           <button onClick={search}>Search</button>
         </div>
         <div>
-          {userList.length && userList.map(user => <Link href={`/admin/users/${user.id}`}>{user.data.alias}</Link>)}
+          {userList && userList.map(user => <Link href={`/admin/users/${user.id}`} key={user.id}>{user.data.alias}</Link>)}
         </div>
     </RoleCheck>
   )
