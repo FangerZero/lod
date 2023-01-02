@@ -25,7 +25,7 @@ export default function Enter(props) {
         const user = userCredential.user;
         // create new doc with user.uid as it's doc name 
         const userDoc = doc(db, 'users', user.uid);
-        console.log('userDoc', userDoc);
+        // console.log('userDoc', userDoc);
           setDoc(userDoc, { username: username, roles: 1 }, { merge: true });
       })
       .catch((error) => {

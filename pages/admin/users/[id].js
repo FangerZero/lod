@@ -5,8 +5,12 @@ import RoleCheck from '../../../components/RoleCheck';
 export default function AdminManageUser() {
   return (
     <RoleCheck role="ADMIN">
-      <Link className={styles.link} href="/admin/users">Back To Users</Link>
         AdminManageUser
+        Ability to Revoke
+        <br />
+        Master 
+        Admin
+        <br />
     </RoleCheck>
   )
 }
