@@ -67,9 +67,7 @@ export default function AdminNewsArticle() {
     setNewsArticle({...newsArticle, title: title, slugTitle: slugTitle});
   };
 
-  const onNewsSubmit = () => {
-    console.log('newsArticle: ', newsArticle);
-    
+  const onNewsSubmit = () => {    
     const newsDocId = `${newsArticle.dateTime.toString().substring(0,10)}-${newsArticle.slugTitle}`;    
     const newsDoc = doc(db, 'news', newsDocId);
     setDoc(newsDoc, {...newsArticle}, { merge: true });

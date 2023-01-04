@@ -16,7 +16,6 @@ export default function AdminFanArts() {
     const getList = async () => { //Admin or Mod
       let c = null;
       if (roles & roleValues.MODERATOR.bit || roles & roleValues.ADMIN.bit || roles & roleValues.MASTER.bit || roles & roleValues.MASTER.bit) {
-        console.log('meow');
         c = query(collection(db, "fanart"), orderBy("dateTime", "desc"), limit(10));
       } else if (roles & roleValues.ARTIST.bit) { // Artist only
         console.log('ruff');
