@@ -1,5 +1,6 @@
 [
     {
+        "link": "dart-feld",
         "name": "Dart Feld",
         "type": "Playable",
         "age": 23,
@@ -10,7 +11,7 @@
         "description": "Dart is the main character of the story. He returns from a five-year journey to find his hometown, Seles, in ruins after being assaulted by Imperial Sandora. He sets out to determine why, and to locate his childhood friend Shana.",
         "theme-url": "",
         "theme-name": "",
-        "profile": "",
+        "profile-img": "",
         "fullbody": "",
         "wiki": "https://legendofdragoon.org/wiki/index.php?title=Dart",
         "additions": [
@@ -50,6 +51,9 @@
             },
             {
                 "name": "Volcano-WIP",
+                "info": "This addition is available at the start of the game.",
+                "gif": "",
+                "hits": 2,
                 "levels": [
                     {
                         "level": 1,

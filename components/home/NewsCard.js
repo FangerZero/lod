@@ -3,7 +3,6 @@ import styles from '../../styles/components/home/NewsCard.module.css';
 import React, { useState, useRef, useEffect } from "react";
 
 export default function NewsCard(props) {
-  console.log("NewsCard props: ", props);
   const newsArticle = useRef(props.article);
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
 
