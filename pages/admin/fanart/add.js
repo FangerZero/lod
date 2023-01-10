@@ -94,7 +94,6 @@ export default function AddFanArt() {
       <ol>
         <li>uid</li>
         <li>Artist</li>
-        <li>Date</li>
         <li>Like</li>
         <li>Dislike</li>
         <li>comments
