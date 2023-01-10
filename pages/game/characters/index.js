@@ -3,7 +3,6 @@ import Image from 'next/image';
 import fs from 'fs/promises';
 import path from 'path';
 import Meta from '../../../components/layout/Meta';
-import characters from '../../../components/game/data/characters.json';
 
 export default function Characters(props) {
   const { characters } = props;
