@@ -26,8 +26,9 @@ export default function NewsArticle() {
   
   useEffect(() => {
     const fetchData = async () => {
-      const newsDoc = await doc(db, "news", slugTitle);
-      const data = await getDoc(newsDoc)
+      console.log('slugTitle: ', slugTitle);
+      const docRef = doc(db, "news", slugTitle);
+      const data = await getDoc(docRef)
       .then(results => {
         setNewsArticle({...results.data()});
         return results.data();
@@ -45,8 +46,10 @@ export default function NewsArticle() {
         });
       }
     };
-    fetchData();
-  }, []);
+    if (slugTitle) {
+      fetchData();
+    }
+  }, [slugTitle]);
   
   const displayDate = (date) => {
     return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
