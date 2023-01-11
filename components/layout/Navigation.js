@@ -68,7 +68,8 @@ export default function Navigation() {
                 <Link className={`${styles['nav-link']} ${styles['admin-nav-link']}`} href="/admin/users">Users</Link>
             }
             {username &&
-                <div className={styles['nav-link']}>{username}</div>
+                <Link className={`${styles['nav-link']}`} href="/profile">{username}</Link>
+                
             }
             <div className={styles.user}>
                 <SignIn />

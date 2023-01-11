@@ -1,9 +1,114 @@
+html {
+  /*Nav Bar*/
+  --nav-bar-bg-color: lightgreen;
+  --nav-bar-bg-color-admin: indigo;
+  --nav-bar-hover-bg-color: #2373b5;
+  --nav-bar-hover-dd-bg-color: red;
+  
+  --nav-bar-font-color: teal;
+  --nav-bar-hover-font-color: green;
+  --nav-bar-hover-dd-font-color: yellow;
+    
+  /*Body*/
+  --body-bg-color: lightblue;
+  --body-bg-color-alt: darkblue;
+  --body-cards-bg-primary: red;
+  --body-cards-bg-secondary: violet;
+
+  --body-font-color: #2373b5;
+  --body-link-font-color: indigo;
+
+  /*Custom Bullet Points*/
+  --body-bullet-red: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-darkness: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-jade: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-silver: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-violet: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-blue: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-gold: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-divine: url("../public/images/bullets/DS_Red-Eye.webp");
+  
+  --body-bullet-image: var(--body-bullet-red);
+}
+
+html[data-theme="darkness"] {
+  /*Nav Bar*/
+  --nav-bar-bg-color: violet;
+  --nav-bar-bg-color-admin: indigo;
+  --nav-bar-hover-bg-color: #2373b5;
+  --nav-bar-hover-dd-bg-color: red;
+  
+  --nav-bar-font-color: teal;
+  --nav-bar-hover-font-color: green;
+  --nav-bar-hover-dd-font-color: yellow;
+    
+  /*Body*/
+  --body-bg-color: indigo;
+  --body-bg-color-alt: darkblue;
+  --body-cards-bg-primary: red;
+  --body-cards-bg-secondary: violet;
+
+  --body-font-color: #2373b5;
+  --body-link-font-color: indigo;
+
+  /*Custom Bullet Points*/
+  --body-bullet-red: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-darkness: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-jade: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-silver: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-violet: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-blue: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-gold: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-divine: url("../public/images/bullets/DS_Red-Eye.webp");
+  
+  --body-bullet-image: var(--body-bullet-darkness);
+}
+
+html[data-theme="red"] {
+  /*Nav Bar*/
+  --nav-bar-bg-color: red;
+  --nav-bar-bg-color-admin: red;
+  --nav-bar-hover-bg-color: red;
+  --nav-bar-hover-dd-bg-color: red;
+  
+  --nav-bar-font-color: teal;
+  --nav-bar-hover-font-color: green;
+  --nav-bar-hover-dd-font-color: yellow;
+    
+  /*Body*/
+  --body-bg-color: indigo;
+  --body-bg-color-alt: darkblue;
+  --body-cards-bg-primary: red;
+  --body-cards-bg-secondary: violet;
+
+  --body-font-color: #2373b5;
+  --body-link-font-color: indigo;
+
+  /*Custom Bullet Points*/
+  --body-bullet-red: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-darkness: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-jade: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-silver: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-violet: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-blue: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-gold: url("../public/images/bullets/DS_Red-Eye.webp");
+  --body-bullet-divine: url("../public/images/bullets/DS_Red-Eye.webp");
+  
+  --body-bullet-image: var(--body-bullet-red);
+}
+
 html,
 body {
+  background-color: var(--body-bg-color);
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+ul {
+  list-style-position: inside;
+  list-style-image: var(--body-bullet-image);
 }
 
 a {

@@ -20,7 +20,6 @@ export default function AdminManageUser() {
     const fetchData = async () => {
       const userDoc = await doc(db, "users", userId);
       await getDoc(userDoc).then(results => {
-        console.log(results);
         setUser({...results.data()});
       });
     };
@@ -40,6 +39,7 @@ export default function AdminManageUser() {
       // User currently doesn't have role and needs to add
       newRoleValue =  Number(newRoleValue) + Number(e.target.value);
     }
+    console.log('newRoleValue', newRoleValue);
     const userDoc = doc(db, 'users', userId);
     setDoc(userDoc, {...user, roles: newRoleValue}, { merge: true });
   };
