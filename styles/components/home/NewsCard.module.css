@@ -1,5 +1,5 @@
 .main {
-    background-color: orange;
+    background-color: var(--body-cards-bg-primary);
     border-radius: 25px;
     padding: 5px 20px;
     margin: 10px;
