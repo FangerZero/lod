@@ -1,0 +1,8 @@
+.left, .left-addition {
+	display: inline-block;
+    width: 20%
+}
+.right, .right-addition {
+	display: inline-block;
+    width: 80%
+}
