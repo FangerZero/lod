@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import characters from './data/characters.json';
+import Image from 'next/image';
 
 export function getAllCharacters() {
     

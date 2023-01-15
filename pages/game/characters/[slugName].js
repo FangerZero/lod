@@ -3,7 +3,7 @@ import path from 'path';
 import Meta from '../../../components/layout/Meta';
 import styles from '../../../styles/game/characters/character.module.css';
 import Image from 'next/image';
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function Character(props) {
   const { characterDetails } = props;

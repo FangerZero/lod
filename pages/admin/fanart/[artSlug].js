@@ -12,7 +12,7 @@ export default function AdminFanArt() {
       <Link className={styles.link} href="/admin/fanart">Back To FanArt</Link>
       AdminFanArt
       artSlug: {artSlug}
-      If artist is not current Artist, or role is not mod/admin can't display
+      If artist is not current Artist, or role is not mod/admin can&pos;t display
     </RoleCheck>
   );
 }

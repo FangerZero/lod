@@ -49,7 +49,7 @@ export default function NewsArticle() {
     if (slugTitle) {
       fetchData();
     }
-  }, [slugTitle]);
+  }, [slugTitle, storage]);
   
   const displayDate = (date) => {
     return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`

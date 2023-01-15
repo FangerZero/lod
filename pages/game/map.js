@@ -6,7 +6,7 @@ export default function Map() {
     return (
       <div>
           <Meta title="Endiness Map" description="Explore the Endiness continent." />
-          <Image src={endiness} width="1000"/>
+          <Image src={endiness} alt="map of endiness" width="1000"/>
       </div>
     )
   }

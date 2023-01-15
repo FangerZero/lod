@@ -36,7 +36,7 @@ export default function AdminNewsArticle() {
       });
     };
     fetchData();
-  }, []);
+  }, [slugTitle]);
   
   // File upload
   const storage = getStorage();
@@ -125,7 +125,7 @@ export default function AdminNewsArticle() {
       <div>
         Main Image (Optional)< br/>
         <input type="file" id="images" onChange={e => setImagesToNewsArticle(e)} accept="image/webp" multiple/>
-        <Image src="" />
+        <Image src="" alt="empty" />
       </div>
       <RichTextEditor htmlToSave={newsArticle.article} setHtmlToSave={setArticle}/>
       <div onChange={e => setNewsArticle({...newsArticle, publish: e.target.value})}>

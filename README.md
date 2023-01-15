@@ -1,3 +1,12 @@
+## The Deets
+Currently this project is thrown together and needs a lot of love. The plan is to build the project and once it's closer to being done, do an overhaul. 
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

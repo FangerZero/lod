@@ -24,7 +24,7 @@ export default function AdminManageUser() {
       });
     };
     fetchData();
-  }, []);
+  }, [userId]);
 
   const updateRole = (e) => {
     let newRoleValue = user.roles;

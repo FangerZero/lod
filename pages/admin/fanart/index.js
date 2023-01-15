@@ -35,7 +35,7 @@ export default function AdminFanArts() {
     if (roles & roleValues.ARTIST.bit || roles & roleValues.MODERATOR.bit || roles & roleValues.ADMIN.bit || roles & roleValues.MASTER.bit) {
       getList();
     }
-  }, []);
+  }, [user, roles]);
 
   return (
     <RoleCheck role="ARTIST,MODERATOR,ADMIN">

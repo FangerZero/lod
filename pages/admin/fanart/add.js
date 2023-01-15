@@ -21,7 +21,7 @@ export default function AddFanArt() {
     images: [],
     article: "",
     author: username,
-    userPid: user.uid,
+    userPid: "",
     ratedR: false,
     publish: false,
     date: new Date()
@@ -42,6 +42,13 @@ export default function AddFanArt() {
     }
 
     setCharSelect(Array.from(tempCharArray));
+    
+    if(user.uid) {
+      // setDoc(newsDoc, {...fanart, userPid: user.uid}, { merge: true });
+      router.push(`/admin/fanart/${newsDocId}`);
+    } else {
+      console.log('FanArt-error: user.uid missing');
+    }
   };
 
   // Date Submitted
@@ -58,7 +65,7 @@ export default function AddFanArt() {
         </div>
         <div>
           Image
-          <input type="file" id="image" onChange={e => setFanart({...fanart, images: [...fanart.images, ...e.target.files]})} accept="image/webp" multiple />
+          <input type="file" id="image" onChange={e => setFanart({...fanart, userPid: user.uid, images: [...fanart.images, ...e.target.files]})} accept="image/webp" multiple />
         </div>
         <div>
           Summary
@@ -68,16 +75,16 @@ export default function AddFanArt() {
           Select Characters (Hold Ctrl when Selecting)
           <br />
           <select id="characters" multiple onChange={e => checkSelect(e)}>
-            {charList && charList.map(char => <option value={char}>{char}</option>)}
+            {charList && charList.map(char => <option key={char} value={char}>{char}</option>)}
           </select>
           <select id="characters" multiple disabled>
-            {charSelect && charSelect.map(char => <option value={char}>{char}</option>)}
+            {charSelect && charSelect.map(char => <option key={char} value={char}>{char}</option>)}
           </select>
         </div>
         <div>
           Location
           <select id="location">
-            {locationList && locationList.map(location => <option value={location}>{location}</option>)}
+            {locationList && locationList.map(location => <option key={location} value={location}>{location}</option>)}
           </select>
         </div>
         <div onChange={e => setFanart({...fanart, publish: e.target.value})}>
@@ -89,7 +96,7 @@ export default function AddFanArt() {
         <br />
         <br />
         <p>
-          Insert Disclaimer about giving rights to display art on the site and possibly streams that was uploaded by the original artist. But also gives Admins the discretion to remove the piece of art if it's found to be inappropriate. 
+          Insert Disclaimer about giving rights to display art on the site and possibly streams that was uploaded by the original artist. But also gives Admins the discretion to remove the piece of art if it&pos;s found to be inappropriate. 
         </p>
       <ol>
         <li>uid</li>

@@ -20,7 +20,7 @@ export default function AddNewsArticle() {
     images: [],
     article: "",
     author: username,
-    userPid: user.uid,
+    userPid: "",
     publish: false,
   });
 
@@ -37,10 +37,13 @@ export default function AddNewsArticle() {
     const newsDocId = `${newsArticle.dateTime.toString().substring(0,10)}-${newsArticle.slugTitle}`;
     const newsDoc = doc(db, 'news', newsDocId)
     
-    setDoc(newsDoc, {...newsArticle}, { merge: true });
+    if(user.uid) {
+      setDoc(newsDoc, {...newsArticle, userPid: user.uid}, { merge: true });
+      router.push(`/admin/news/${newsDocId}`);
+    } else {
+      console.log('News-error: user.uid missing');
+    }
     
-    console.log('newsDoc', newsDoc);
-    router.push(`/admin/news/${newsDocId}`);
   }
 
   return (
