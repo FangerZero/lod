@@ -1,9 +1,11 @@
-import fs from 'fs/promises';
-import path from 'path';
+// import fs from 'fs/promises';
+// import path from 'path';
 import Meta from '../../../components/layout/Meta';
 import styles from '../../../styles/game/characters/character.module.css';
 import Image from 'next/image';
 import React, { useState } from "react";
+import { collection, query, limit, getDocs, where} from "firebase/firestore";
+import { db } from '../../../lib/firebase';
 
 export default function Character(props) {
   const { characterDetails } = props;
@@ -91,18 +93,39 @@ export default function Character(props) {
 }
 
 // Everything Below is for going to production 
+/*
 async function getCharacters() {
   const filePath = path.join(process.cwd(), 'components','game','data','characters.json');
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
   return data
 } 
+*/
+
+async function getDBCharacters(link = null) {
+  let characterQuery = query(collection(db, "characters"), where("type", "==", "Playable"), limit(10));
+  if (link) {
+    characterQuery = query(collection(db, "characters"), where("link", "==", link));
+  }
+  const characterDocs = await getDocs(characterQuery);
+  const newArray = [];
+
+  characterDocs.forEach((doc) => {
+    newArray.push({...doc.data()});
+  });
+  
+  return newArray;
+}
 
 export async function getStaticProps(context) {
   const { params } = context;
-  const slugName = params.slugName;
-  const characters = await getCharacters();
-  const character = characters.find(character => character.link === slugName);
+  // const slugName = params.slugName;
+  // const characters = await getCharacters();
+
+  const dbChar = await getDBCharacters(params.slugName);
+
+  // const character = characters.find(character => character.link === slugName);
+  const character = dbChar[0];
 
   if (!character) {
     return { notFound: true };
@@ -116,7 +139,8 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const characters = await getCharacters();
+  // const characters = await getCharacters();
+  const characters = await getDBCharacters();
   const pathsWithParams = characters.map(character => ({params: {slugName: character.link}}));
 
   return {
