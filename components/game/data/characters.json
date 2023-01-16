@@ -1,5 +1,10 @@
 [
     {
+        "link": "rose",
+        "name": "Rose",
+        "type": "Playable"
+    },
+    {
         "link": "dart-feld",
         "name": "Dart Feld",
         "type": "Playable",
