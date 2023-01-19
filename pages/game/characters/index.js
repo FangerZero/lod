@@ -7,7 +7,6 @@ import { db } from '../../../lib/firebase';
 
 export default function Characters(props) {
   const { characters } = props;
-  console.log('characters: ', characters)
 
   return (
     <>
