@@ -1,3 +1,19 @@
+Starting project
+download
+run `npm install`
+to run in dev mode 
+`npm run dev`
+to get ready for firebase deploy
+`npm run build && npm run export`
+to deploy to firebase
+`firebase deploy --only hosting`
+
+Don't forget to throw it up on github
+
+
+
+
+
 ## The Deets
 Currently this project is thrown together and needs a lot of love. The plan is to build the project and once it's closer to being done, do an overhaul. 
 
