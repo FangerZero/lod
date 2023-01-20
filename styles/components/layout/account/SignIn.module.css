@@ -2,7 +2,7 @@
     margin-top: 7px 10px;
     width: 300px;
     padding-top: 10px;
-    background-color: var(--nav-bar-bg-color);
+    background-color: var(--primary);
     position: absolute;
     right: 0px;
 }

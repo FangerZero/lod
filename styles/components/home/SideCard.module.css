@@ -1,6 +1,8 @@
 .main {
     display: block;
-    background-color: var(--body-cards-bg-secondary);
+    background-color: var(--tertiary);
+    border-color: var(--black);
+    border-style: solid;
     border-radius: 25px;
     padding: 10px 20px;
     margin: 10px;
