@@ -1,3 +1,5 @@
+import PetitionSign from '../../components/community/PetitionSign';
+
 export default function Petition() {
     return (
       <div>
@@ -11,7 +13,7 @@ export default function Petition() {
           The minimum goal is to attain 11,682 signatures (years since Dragon Campaign). We have reached our main target of 25,000 signatures! The next target is 50,000 and then 100,000. 
         </p>
         <p>
-          Petition Thing
+          <PetitionSign />
         </p>
         <p>
           One fan was so deeply inspired by this campaign, that they recorded a voiceover of the letter. It is done in the style of LoD’s history videos. Voice credit to RAVENSAUDIO.
